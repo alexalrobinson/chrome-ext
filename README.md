@@ -1,4 +1,4 @@
-# Chrome Extension
+# Orientation Project - Chrome Extension
 
 ## Instructions
 Once you have the project on your local machine, go to chrome://extensions/, turn on developer mode, and click Load Unpacked. Choose the project directory and the extension will be loaded
