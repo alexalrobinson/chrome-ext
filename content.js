@@ -38,7 +38,8 @@ chrome.storage.sync.get(null, function(data) {
 	document.getElementsByTagName('header')[0].style.backgroundColor = data.background;
 	
 	//var numItems = $('div.item').length; - attempt to count number of div containers before applying color to them. Should be fixed and "60" in the iteration should be replaced with this var numItems.
-	
+	//                  Doing so causes divs that may not have been desired to override to be overridden. 
+	//                  One solution would be to allow the user to set the number of divs to recolor so that they may tailor to more niche sites
 	//Iterates through 30 div containers and applies style changes to each one - works for websites such as reddit where changing the body and header is not sufficient.
 	for (let i = 0; i < 60; i++)
 	{
