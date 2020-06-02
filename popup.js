@@ -1,6 +1,7 @@
 //you see this when you click on the extension in your browser
 
 const background = document.querySelector('#background');
+const txt = document.querySelector('#txt');
 const rangeslider = document.getElementById("sliderRange"); 
 const output = document.getElementById("demo");
 
@@ -18,6 +19,7 @@ chrome.storage.sync.get(null, function(data) {
   background.value = data.background;
   rangeslider.value = data.layers;
   output.innerHTML = data.layers;
+  txt.value = data.txt;
 });
 
 background.onchange = function(element) {
@@ -27,6 +29,14 @@ background.onchange = function(element) {
   });
   reloadRecentTab();
 };
+
+txt.onchange = function(element) {
+  const color = element.target.value;
+  chrome.storage.sync.set({txt: color}, function(){
+    console.log(`Changed text color`);
+  });
+  reloadRecentTab();
+}
 
 rangeslider.oninput = function() { 
   output.innerHTML = this.value;

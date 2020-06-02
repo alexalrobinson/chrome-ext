@@ -31,6 +31,9 @@ chrome.storage.sync.get(null, function(data) {
 		divLayer(divs, 0, divLayers, data.background);
 	}
 	
+	//Applies selected color to text
+	document.querySelector('body').style.color = data.txt;
+
 	//Applies selected color to header, moved to bottom because it sometimes fails due to CORS policy
 	document.getElementsByTagName('header')[0].style.backgroundColor = data.background;
 });
