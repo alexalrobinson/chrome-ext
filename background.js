@@ -3,7 +3,7 @@ console.log("Background running");
 
 chrome.runtime.onInstalled.addListener(function() {
   //change default background to #303030 when dark mode is implemented
-  chrome.storage.sync.set({background: '#ccccff', darkmode: true}, function() {
+  chrome.storage.sync.set({background: '#ccccff', darkmode: true, layers: 0}, function() {
     console.log("Default is Dark Mode");
   });
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {

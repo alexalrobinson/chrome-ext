@@ -25,7 +25,7 @@ chrome.storage.sync.get(null, function(data) {
 	//Applies selected color to head
 	document.getElementsByTagName('head')[0].style.backgroundColor = data.background;
 
-	const divLayers = 3;
+	const divLayers = data.layers;
 	const divs = document.querySelectorAll('body > div');
 	if(divLayers){
 		divLayer(divs, 0, divLayers, data.background);

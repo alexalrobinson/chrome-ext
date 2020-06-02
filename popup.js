@@ -1,31 +1,37 @@
 //you see this when you click on the extension in your browser
 
-let background = document.querySelector('#background');
+const background = document.querySelector('#background');
+const rangeslider = document.getElementById("sliderRange"); 
+const output = document.getElementById("demo");
 
-chrome.storage.sync.get(null, function(data) {
-  background.value = data.background;
-});
-
-background.onchange = function(element) {
-    let id = element.target.id;
-    let color = element.target.value; 
+const reloadRecentTab = () => {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.reload(tabs[0].id);
     chrome.tabs.executeScript(
       tabs[0].id,
-      {code: `document.body.style.backgroundColor= "${color}";`}
+      {file: "content.js"}
     );
-  });
-  chrome.storage.sync.set({background: color}, function() {
-    console.log(`Changed ${id}`);
   });
 };
 
-//SLIDER RESETS ON REFRESH, HOW TO FIX? HOW TO STORE IN GOOGLE.STORAGE?
-var rangeslider = document.getElementById("sliderRange"); 
-var output = document.getElementById("demo"); 
-output.innerHTML = rangeslider.value; 
-  
-rangeslider.oninput = function() { 
-  output.innerHTML = this.value; 
-}
+chrome.storage.sync.get(null, function(data) {
+  background.value = data.background;
+  rangeslider.value = data.layers;
+  output.innerHTML = data.layers;
+});
 
+background.onchange = function(element) {
+  const color = element.target.value; 
+  chrome.storage.sync.set({background: color}, function() {
+    console.log(`Changed background`);
+  });
+  reloadRecentTab();
+};
+
+rangeslider.oninput = function() { 
+  output.innerHTML = this.value;
+  chrome.storage.sync.set({layers: this.value}, function () {
+    console.log("Changed # of layers");
+  });
+  reloadRecentTab();
+};
