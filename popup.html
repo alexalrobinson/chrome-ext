@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,4 +22,52 @@
 
     <script src="popup.js"></script>
   </body>
+=======
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      div {
+        margin: 0 0 5px;
+      }
+    </style>
+    
+    <link href ="switch.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <h3>On/Off</h3>
+    <div>
+      <label class="switch">
+        <input type="checkbox" id="toggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <h3>Colors</h3>
+    <div>
+      <input type="color" id="background" name="background" value="#303030">
+      <label for="background">Background</label>
+    </div>
+
+    <div>
+      <input type="color" id="txt" name="txt" value="#ffffff">
+      <label for="txt">Text</label>
+    </div>
+
+    <div>
+      <h3>Upload BG</h3>
+      <button>Upload</button>
+    </div>
+
+    
+    <div class="rangeslider"> 
+      <input type="range" min="1" max="1000" value="60" class="myslider" id="sliderRange"> 
+      <p>Value: <span id="demo"></span></p> 
+    </div> 
+
+    <script src="popup.js"></script>
+  </body>
+>>>>>>> d7622e2c761489dceea0807d784a4a7cef5b2c4d
 </html>
