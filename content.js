@@ -20,10 +20,10 @@ chrome.storage.sync.get(null, function(data) {
 		console.log("dark mode to-do");
 	}
 	//Applies selected color to body
-	document.querySelector("body").style.backgroundColor = data.background;
+	document.querySelector('body').style.backgroundColor = data.background;
 	
 	//Applies selected color to head
-	document.getElementsByTagName("head")[0].style.backgroundColor = data.background;
+	document.getElementsByTagName('head')[0].style.backgroundColor = data.background;
 
 	const divLayers = 3;
 	const divs = document.querySelectorAll('body > div');
@@ -32,5 +32,5 @@ chrome.storage.sync.get(null, function(data) {
 	}
 	
 	//Applies selected color to header, moved to bottom because it sometimes fails due to CORS policy
-	document.getElementsByTagName("header")[0].style.backgroundColor = data.background;
+	document.getElementsByTagName('header')[0].style.backgroundColor = data.background;
 });
