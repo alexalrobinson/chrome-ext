@@ -41,7 +41,9 @@ chrome.storage.sync.get(null, function(data) {
 	//                  Doing so causes divs that may not have been desired to override to be overridden. 
 	//                  One solution would be to allow the user to set the number of divs to recolor so that they may tailor to more niche sites
 	//Iterates through 30 div containers and applies style changes to each one - works for websites such as reddit where changing the body and header is not sufficient.
-	for (let i = 0; i < 60; i++)
+
+	//HOW TO ACCESS SLIDER VALUE HERE?
+	for (let i = 0; i < rangeslider.value; i++)
 	{
 		document.getElementsByTagName('div')[i].style.backgroundColor = data.background;
 	}
