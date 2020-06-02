@@ -6,13 +6,36 @@
         margin: 0 0 5px;
       }
     </style>
+    
+    <link href ="switch.css" rel="stylesheet">
+
   </head>
   <body>
+
+    <h3>On/Off</h3>
+    <div>
+      <label class="switch">
+        <input type="checkbox" id="toggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+
     <h3>Colors</h3>
     <div>
       <input type="color" id="background" name="background" value="#303030">
       <label for="background">Background</label>
     </div>
+
+    <div>
+      <input type="color" id="txt" name="txt" value="#ffffff">
+      <label for="txt">Text</label>
+    </div>
+
+    <div>
+      <h3>Upload BG</h3>
+      <button>Upload</button>
+    </div>
+
     <script src="popup.js"></script>
   </body>
 </html>
