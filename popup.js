@@ -4,6 +4,7 @@ const background = document.querySelector('#background');
 const txt = document.querySelector('#txt');
 const rangeslider = document.getElementById("sliderRange"); 
 const output = document.getElementById("demo");
+const refreshButton = document.getElementById("refreshButton");
 
 const reloadRecentTab = () => {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
@@ -43,5 +44,9 @@ rangeslider.oninput = function() {
   chrome.storage.sync.set({layers: this.value}, function () {
     console.log("Changed # of layers");
   });
+  reloadRecentTab();
+};
+
+refreshButton.onclick = function() {
   reloadRecentTab();
 };
