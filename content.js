@@ -1,5 +1,11 @@
 console.log("Runs on page load");
 
+const body = document.querySelector("body");
+const firstLayerDivs = document.querySelectorAll("body > div");
+let allElts = document.querySelectorAll("*");
+const images = document.querySelectorAll("img");
+const html = document.querySelector("html");
+
 function divLayer(divs, currNum, endNum, color){
 	if(currNum < endNum){
 		for (div of divs){
@@ -16,23 +22,36 @@ function divLayer(divs, currNum, endNum, color){
 
 chrome.storage.sync.get(null, function(data) {
 	console.log(data);
-	if(data.darkmode){
-		console.log("dark mode to-do");
+	for(elt of allElts){
+		if(elt.tagName !== "CODE" && elt.tagName !== "PRE" && elt.tagName !== "SPAN"){
+			if(data.darkmode && (elt.style.display === "block" || elt.style || elt.style.display ==="flex")){
+				elt.style["background-color"] = "#202020";
+				elt.style.backgroundColor = "#202020";
+			}
+			elt.style["color"] = data.txt;
+			elt.style.color = data.txt;
+			if(elt.style.border || elt.style["border-color"]){
+				elt.style["border-color"] = data.txt;
+			}
+		}
+		else if (elt.tagName === "CODE"){
+			elt.style["color"] = "black";
+			elt.style.color = "black";
+		}
 	}
 	//Applies selected color to body
-	document.querySelector('body').style.backgroundColor = data.background;
+	body.style.backgroundColor = data.background;
+	body.style.color = data.text;
 	
 	//Applies selected color to head
 	document.getElementsByTagName('head')[0].style.backgroundColor = data.background;
 
-	const divLayers = data.layers;
-	const divs = document.querySelectorAll('body > div');
-	if(divLayers){
-		divLayer(divs, 0, divLayers, data.background);
+	if(data.layers){
+		divLayer(firstLayerDivs, 0, data.layers, data.background);
 	}
 	
 	//Applies selected color to text
-	document.querySelector('body').style.color = data.txt;
+	body.style.color = data.txt;
 
 	//Applies selected color to header, moved to bottom because it sometimes fails due to CORS policy
 	document.getElementsByTagName('header')[0].style.backgroundColor = data.background;

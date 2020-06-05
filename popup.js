@@ -5,6 +5,7 @@ const txt = document.querySelector('#txt');
 const rangeslider = document.getElementById("sliderRange"); 
 const output = document.getElementById("demo");
 const refreshButton = document.getElementById("refreshButton");
+const darkmode = document.querySelector("#toggle:checked");
 
 const reloadRecentTab = () => {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
@@ -21,7 +22,16 @@ chrome.storage.sync.get(null, function(data) {
   rangeslider.value = data.layers;
   output.innerHTML = data.layers;
   txt.value = data.txt;
+  switch.value = data.darkmode;
 });
+
+darkmode.onchange = function(element){
+  const dark = element.target.value;
+  chrome.storage.sync.set({darkmode: dark}, function() {
+    console.log(`Changed darkmode`);
+  });
+  reloadRecentTab();
+}
 
 background.onchange = function(element) {
   const color = element.target.value; 
