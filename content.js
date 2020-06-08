@@ -25,8 +25,8 @@ chrome.storage.sync.get(null, function(data) {
 	for(elt of allElts){
 		if(elt.tagName !== "CODE" && elt.tagName !== "PRE" && elt.tagName !== "SPAN"){
 			if(data.darkmode && (elt.style.display === "block" || elt.style || elt.style.display ==="flex")){
-				elt.style["background-color"] = "#202020";
-				elt.style.backgroundColor = "#202020";
+				elt.style["background-color"] = data.background;
+				elt.style.backgroundColor = data.background;
 			}
 			elt.style["color"] = data.txt;
 			elt.style.color = data.txt;
