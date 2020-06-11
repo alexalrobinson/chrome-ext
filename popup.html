@@ -3,7 +3,7 @@
   <head>
     <style>
       div {
-        margin: 0 0 5px;
+        margin: 0 0 15px;
       }
     </style>
     
@@ -12,31 +12,33 @@
   </head>
   <body>
 
-    <h3>On/Off</h3>
+    <h1>Settings</h1>
+
     <div>
+      <h3>Dark Mode</h3>
       <label class="switch">
         <input type="checkbox" id="toggle">
         <span class="slider"></span>
       </label>
     </div>
-
-    <h3>Colors</h3>
-    <div>
-      <input type="color" id="background" name="background" value="#303030">
-      <label for="background">Background</label>
-    </div>
-
-    <div>
-      <input type="color" id="txt" name="txt" value="#ffffff">
-      <label for="txt">Text</label>
-    </div>
-
-    <div>
-      <h3>Upload BG</h3>
-      <button>Upload</button>
-    </div>
-
     
+    <div>
+      <h3>Backgound Color</h3>
+      <input type="color" id="background" name="background" value="#303030">
+    </div>
+    
+    <div>
+      <h3>Text Color</h3>
+      <input type="color" id="txt" name="txt" value="#ffffff">
+    </div>
+
+    <div>
+      <h3>Background Image</h3>
+      <input type="text" id="background-img">
+      <button id="upload">Upload</button>
+      <button id="remove">Remove</button>
+    </div>
+  
     <div class="rangeslider"> 
       <input type="range" min="0" max="10" value="0" class="myslider" id="sliderRange"> 
       <p>Color Index: <span id="demo"></span></p> 

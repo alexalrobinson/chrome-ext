@@ -1,8 +1,10 @@
 //you see this when you check extension options in the menu, currently identical to the popup
 
 const background = document.querySelector('#background');
-const rangeslider = document.getElementById("sliderRange"); 
-const output = document.getElementById("demo");
+const txt = document.querySelector('#txt');
+const backgroundImg = document.getElementById("background-img");
+const upload = document.getElementById("upload");
+const remove = document.getElementById("remove");
 
 const reloadRecentTab = () => {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
@@ -16,7 +18,7 @@ const reloadRecentTab = () => {
 
 chrome.storage.sync.get(null, function(data) {
   background.value = data.background;
-  rangeslider.value = data.rangeslider;
+  txt.value = data.txt;
 });
 
 background.onchange = function(element) {
@@ -27,13 +29,24 @@ background.onchange = function(element) {
   reloadRecentTab();
 };
 
-//SLIDER RESETS ON REFRESH, HOW TO FIX? HOW TO STORE IN GOOGLE.STORAGE?
-output.innerHTML = rangeslider.value; 
-  
-rangeslider.oninput = function() { 
-  output.innerHTML = this.value;
-  chrome.storage.sync.set({layers: this.value}, function () {
-    console.log("Changed # of layers");
+txt.onchange = function(element) {
+  const color = element.target.value;
+  chrome.storage.sync.set({txt: color}, function(){
+    console.log(`Changed text color`);
+  });
+  reloadRecentTab();
+};
+
+upload.onclick = function() {
+  chrome.storage.sync.set({img: backgroundImg.value}, function() {
+    console.log("changed image");
+  });
+  reloadRecentTab();
+};
+
+remove.onclick = function() {
+  chrome.storage.sync.set({img: false}, function() {
+    console.log("removed image");
   });
   reloadRecentTab();
 };
