@@ -1,0 +1,47 @@
+{
+    "author": "Antares",
+    "background": {
+        "page": "background.html",
+        "persistent": true
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "content.js"
+            ],
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ]
+        }
+    ],
+    "description": "Change fonts and color schemes",
+    "icons": {
+        "16": "images/style16.png",
+        "32": "images/style32.png",
+        "48": "images/style48.png",
+        "128": "images/style128.png"
+    },
+    "manifest_version": 2,
+    "name": "Browse with Style",
+    "options_page": "options.html",
+    "page_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/style16.png",
+            "32": "images/style32.png",
+            "48": "images/style48.png",
+            "128": "images/style128.png"
+        }
+    },
+    "permissions": [
+        "activeTab",
+        "declarativeContent",
+        "storage"
+    ],
+    "version": "0.1.0",
+    "-ms-preload": {
+        "backgroundScript": "backgroundScriptsAPIBridge.js",
+        "contentScript": "contentScriptsAPIBridge.js"
+    }
+}
